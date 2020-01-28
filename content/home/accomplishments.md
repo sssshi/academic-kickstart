@@ -32,7 +32,7 @@ date_format = "Jan 2006"
   title = "Third-class scholarship in sophomore year"
   date_start = "2015-09-01"
   date_end = "2016-07-01"
-  description = "Formulated informed blockchain models, hypotheses, and use cases."
+  description = ""
   
 [[item]]
   organization = "Beijing University of Posts and Telecommunications"
