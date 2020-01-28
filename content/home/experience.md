@@ -35,12 +35,6 @@ date_format = "Jan 2006"
   date_start = "2018-09-01"
   date_end = "2019-07-01"
   description = """Made corresponding research on big data"""
-  Responsibilities include:
-  
-  * Analysing
-  * Modelling
-  * Deploying
-  """
 
 [[experience]]
   title = "Undergraduate"
