@@ -29,7 +29,7 @@ subtitle = ""
 [[feature]]
   icon = "camera-retro"
   icon_pack = "fas"
-  name = "Jva"
+  name = "Java"
   description = "70%"
 
 +++
