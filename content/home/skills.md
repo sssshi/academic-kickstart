@@ -15,21 +15,45 @@ subtitle = ""
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
 
 [[feature]]
-  icon = "grin-hearts" 
+  icon = "dog" 
   icon_pack = "fas"
   name = "C"
   description = "80%"
   
 [[feature]]
-  icon = "chart-line"
+  icon = "grin"
   icon_pack = "fas"
   name = "C++"
   description = "80%"  
   
 [[feature]]
-  icon = "camera-retro"
+  icon = "horse"
   icon_pack = "fas"
   name = "Java"
   description = "70%"
+
+[[feature]]
+  icon = "grin-tongue"
+  icon_pack = "fas"
+  name = "Python"
+  description = "90%"
+  
+[[feature]]
+  icon = "paw"
+  icon_pack = "fas"
+  name = "Html"
+  description = "85%"
+  
+[[feature]]
+  icon = "laugh"
+  icon_pack = "fas"
+  name = "Css"
+  description = "85%"
+  
+[[feature]]
+  icon = "snowman"
+  icon_pack = "fas"
+  name = "JavaScript"
+  description = "80%"
 
 +++
