@@ -17,14 +17,24 @@ date_format = "Jan 2006"
 #   Required fields are `title`, `company`, and `date_start`.
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
+
 [[experience]]
-  title = "CEO"
-  company = "GenCoin"
-  company_url = ""
-  location = "California"
-  date_start = "2017-01-01"
+  title = "Graduate"
+  company = "The University of Texas at Arlington"
+  company_url = "https://www.uta.edu/"
+  location = "Arlington"
+  date_start = "2019-09-01"
   date_end = ""
-  description = """
+  description = """Learned Data Mining、Machine Learning、Software Engineering."""
+  
+[[experience]]
+  title = "Graduate"
+  company = "Beijing University of Posts and Telecommunications"
+  company_url = "https://www.bupt.edu.cn/"
+  location = "Beijing"
+  date_start = "2018-09-01"
+  date_end = "2019-07-01"
+  description = """Made corresponding research on big data"""
   Responsibilities include:
   
   * Analysing
@@ -33,12 +43,12 @@ date_format = "Jan 2006"
   """
 
 [[experience]]
-  title = "Professor"
-  company = "University X"
-  company_url = ""
-  location = "California"
-  date_start = "2016-01-01"
-  date_end = "2016-12-31"
-  description = """Taught electronic engineering and researched semiconductor physics."""
+  title = "Undergraduate"
+  company = "Beijing University of Posts and Telecommunications"
+  company_url = "https://www.bupt.edu.cn/"
+  location = "Beijing"
+  date_start = "2014-09-01"
+  date_end = "2018-07-01"
+  description = """Learned the principles of computer composition、operating system、data structure and comouter network."""
 
 +++
