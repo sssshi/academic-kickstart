@@ -21,9 +21,9 @@ date_format = "Jan 2006"
 [[item]]
   organization = "Beijing University of Posts and Telecommunications"
   organization_url = "https://www.bupt.edu.cn/"
-  title = "Third-class scholarship in junior year"
-  date_start = "2016-09-01"
-  date_end = "2017-07-01"
+  title = "Design and implementation of fault case classification method for power grid equipment based on deep learning"
+  date_start = "2018-06-01"
+  date_end = "2018-01-01"
   description = ""
 
 [[item]]
