@@ -19,33 +19,35 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[item]]
-  organization = "Coursera"
-  organization_url = "https://www.coursera.org"
-  title = "Neural Networks and Deep Learning"
-  url = ""
-  certificate_url = "https://www.coursera.org"
-  date_start = "2018-10-01"
-  date_end = ""
+  organization = "Beijing University of Posts and Telecommunications"
+  organization_url = "https://www.bupt.edu.cn/"
+  title = "Third-class scholarship in junior year"
+  date_start = "2016-09-01"
+  date_end = "2017-07-01"
   description = ""
 
 [[item]]
-  organization = "edX"
-  organization_url = "https://www.edx.org"
-  title = "Blockchain Fundamentals"
-  url = "https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
-  certificate_url = "https://www.edx.org"
-  date_start = "2018-03-01"
-  date_end = ""
+  organization = "Beijing University of Posts and Telecommunications"
+  organization_url = "https://www.bupt.edu.cn/"
+  title = "Third-class scholarship in sophomore year"
+  date_start = "2015-09-01"
+  date_end = "2016-07-01"
   description = "Formulated informed blockchain models, hypotheses, and use cases."
   
 [[item]]
-  organization = "DataCamp"
-  organization_url = "https://www.datacamp.com"
-  title = "Object-Oriented Programming in R: S3 and R6 Course"
-  url = ""
-  certificate_url = "https://www.datacamp.com"
-  date_start = "2017-07-01"
-  date_end = "2017-12-21"
+  organization = "Beijing University of Posts and Telecommunications"
+  organization_url = "https://www.bupt.edu.cn/"
+  title = "Second-class scholarship in freshman year"
+  date_start = "2014-09-01"
+  date_end = "2015-07-01"
+  description = ""
+  
+[[item]]
+  organization = "Beijing University of Posts and Telecommunications"
+  organization_url = "https://www.bupt.edu.cn/"
+  title = "Merit student in freshman year"
+  date_start = "2014-09-01"
+  date_end = "2015-07-01"
   description = ""
 
 +++
