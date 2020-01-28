@@ -26,13 +26,13 @@ interests:
 
 education:
   courses:
-  - course: Graduate in Artificial Intelligence
+  - course: M.Eng. in Artificial Intelligence
     institution: The University of Texas at Arlington
     year: 2019-Now
-  - course: Graduate in Computer Science
+  - course: M.Eng. in Computer Science
     institution: Beijing University of Posts and Telecommunications
     year: 2018-2019
-  - course: Undergraduate in Network Engineering
+  - course: BSc in Network Engineering
     institution: Beijing University of Posts and Telecommunications
     year: 2014-2018
 
