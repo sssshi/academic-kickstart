@@ -33,8 +33,8 @@ date_format = "Jan 2006"
   organization = "Beijing University of Posts and Telecommunications"
   organization_url = "https://www.bupt.edu.cn/"
   title = "Third-class scholarship in sophomore year"
-  date_start = "2015-09-01"
-  date_end = "2016-07-01"
+  date_start = "2019-09-01"
+  date_end = "2019-12-01"
   description = ""
   
 [[item]]
