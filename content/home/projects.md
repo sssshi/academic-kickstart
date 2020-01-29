@@ -32,7 +32,7 @@ date_format = "Jan 2006"
   title = "Developing a News app only for women"
   date_start = "2019-09-01"
   date_end = "2019-12-01"
-  description = "Using Java to code a News app only for women and the data is collected from API"
+  description = "Using Java to code a News app only for women and the data is collected from API."
   
 
 +++
