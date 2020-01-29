@@ -24,7 +24,10 @@ date_format = "Jan 2006"
   title = "Design and implementation of fault case classification method for power grid equipment based on deep learning"
   date_start = "2018-06-01"
   date_end = "2018-01-01"
-  description = ""
+  description = "1. Classifying equipment defects using Deep Learning.
+                 2. Designing CNN and LSTM using Tensorflow.
+                 3. Using the real data collected by human.
+                 "
 
 [[item]]
   organization = "Beijing University of Posts and Telecommunications"
