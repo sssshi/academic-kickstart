@@ -28,10 +28,10 @@ education:
   courses:
   - course: M.Eng. in Artificial Intelligence
     institution: The University of Texas at Arlington
-    year: 2019-Now
+    year: 2019-Presnet
   - course: M.Eng. in Computer Science
     institution: Beijing University of Posts and Telecommunications
-    year: 2018-2019
+    year: 2018-Present
   - course: BSc in Network Engineering
     institution: Beijing University of Posts and Telecommunications
     year: 2014-2018
