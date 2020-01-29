@@ -24,7 +24,7 @@ date_format = "Jan 2006"
   title = "Design and implementation of fault case classification method for power grid equipment based on deep learning"
   date_start = "2018-06-01"
   date_end = "2018-01-01"
-  description = "Classifying equipment defects using Deep Learning.Designing CNN and LSTM using Tensorflow."
+  description = "Designing CNN and LSTM using Tensorflow to classify equipment defects using the real data collected by human."
 
 [[item]]
   organization = "The University of Texas at Arlington"
