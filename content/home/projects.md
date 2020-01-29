@@ -26,8 +26,7 @@ date_format = "Jan 2006"
   date_end = "2018-01-01"
   description = "1. Classifying equipment defects using Deep Learning.
                  2. Designing CNN and LSTM using Tensorflow.
-                 3. Using the real data collected by human.
-                 "
+                 3. Using the real data collected by human."
 
 [[item]]
   organization = "Beijing University of Posts and Telecommunications"
