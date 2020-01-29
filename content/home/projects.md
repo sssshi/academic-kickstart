@@ -24,31 +24,20 @@ date_format = "Jan 2006"
   title = "Design and implementation of fault case classification method for power grid equipment based on deep learning"
   date_start = "2018-06-01"
   date_end = "2018-01-01"
-  description = ""
+  description = "1. Classifying equipment defects using Deep Learning.
+                 2. Designing CNN and LSTM using Tensorflow.
+                 3. Using the real data collected by human."
 
 [[item]]
-  organization = "Beijing University of Posts and Telecommunications"
+  organization = "The University of Texas at Arlington"
   organization_url = "https://www.bupt.edu.cn/"
-  title = "Third-class scholarship in sophomore year"
+  title = "The development of News app only for women"
   date_start = "2019-09-01"
   date_end = "2019-12-01"
-  description = ""
+  description = "1. Developing a Android news app only for women.
+                 2. Using Java to code this project.
+                 3. Collecting data from API."
   
-[[item]]
-  organization = "Beijing University of Posts and Telecommunications"
-  organization_url = "https://www.bupt.edu.cn/"
-  title = "Second-class scholarship in freshman year"
-  date_start = "2014-09-01"
-  date_end = "2015-07-01"
-  description = ""
-  
-[[item]]
-  organization = "Beijing University of Posts and Telecommunications"
-  organization_url = "https://www.bupt.edu.cn/"
-  title = "Merit student in freshman year"
-  date_start = "2014-09-01"
-  date_end = "2015-07-01"
-  description = ""
 
 +++
 
