@@ -20,18 +20,22 @@ date_format = "Jan 2006"
 
 [[item]]
   organization = "Kaggle"
-  organization_url = ”https://www.kaggle.com/c/nlp-getting-started“
+  organization_url = "https://www.kaggle.com/c/nlp-getting-started/overview/timeline"
   title = "Real or Not? NLP with Disaster Tweets"
-  url = ”files/yujia_practice.ipynb“
-  date_start = "2020-02-27"
-  date_end = "2020-02-29"
-  description = "Predict which Tweets are about real disasters and which ones are not"
+  url = "files/yujia_practice.ipynb"
+  certificate_url = "files/submit.jpg"
+  date_start = "2020-02-01"
+  date_end = "2020-02-25"
+  description = ""
 
-
+# [[item]]
+#  organization = "edX"
+#  organization_url = "https://www.edx.org"
+#  title = "Blockchain Fundamentals"
+#  url = "https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
+#  certificate_url = "https://www.edx.org"
+#  date_start = "2018-03-01"
+#  date_end = ""
+#  description = "Formulated informed blockchain models, hypotheses, and use cases."
   
-
 +++
-
-
-
-
