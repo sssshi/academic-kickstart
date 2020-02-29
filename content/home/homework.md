@@ -20,8 +20,9 @@ date_format = "Jan 2006"
 
 [[item]]
   organization = "Kaggle"
-  organization_url = files/yujia_practice.ipynb
+  organization_url = ”https://www.kaggle.com/c/nlp-getting-started“
   title = "Real or Not? NLP with Disaster Tweets"
+  url = ”files/yujia_practice.ipynb“
   date_start = "2020-02-27"
   date_end = "2020-02-29"
   description = "Predict which Tweets are about real disasters and which ones are not"
