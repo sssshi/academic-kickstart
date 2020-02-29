@@ -26,7 +26,7 @@ date_format = "Jan 2006"
   certificate_url = "files/submit.jpg"
   date_start = "2020-02-01"
   date_end = "2020-02-25"
-  description = ""
+  description = "I use Naive Bayes to do predict which Tweets are about real disasters and which ones are not"
 
 # [[item]]
 #  organization = "edX"
