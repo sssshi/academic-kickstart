@@ -56,8 +56,8 @@ subtitle = ""
   # color = "#333"
   
   # Background gradient.
-  gradient_start = "DeepSkyBlue"
-  gradient_end = "SkyBlue"
+  # gradient_start = "DeepSkyBlue"
+  # gradient_end = "SkyBlue"
   
   # Background image.
   image = "header/bubbles-wide.jpg"  # Name of image in `static/img/`.
