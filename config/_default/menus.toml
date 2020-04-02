@@ -24,7 +24,7 @@
   weight = 40
   
 [[main]]
-name = "Assignments"
+name = "Assignment"
 url = "#posts"
 weight = 50
 
