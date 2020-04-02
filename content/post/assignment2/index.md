@@ -1,6 +1,6 @@
 ---
 date: 2020-3-31
-title: Assignment2
+title: Assignment2（KNN）
 ---
 
 
