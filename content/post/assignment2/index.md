@@ -2,7 +2,6 @@
 date: 2020-3-31
 title: Assignment2
 ---
-{{% staticref "files/hengchao_02.ipynb" "newtab" %}}Download my files{{% /staticref %}}
 
 # Assignment2
 
