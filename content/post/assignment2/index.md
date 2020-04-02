@@ -3,8 +3,6 @@ date: 2020-3-31
 title: Assignment2
 ---
 
-# Assignment2
-
 
 <font face="微软雅黑" size=5> a.divide the dataset as development and test
 
