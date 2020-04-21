@@ -1,3 +1,9 @@
+---
+date: 2020-4-21
+title: Assignment3（NaiveBayes）
+---
+{{% staticref "files/shi_03.ipynb" "newtab" %}}Download my file{{% /staticref %}}
+
 
 <font face="微软雅黑" size=5> a.Generate data pairs & build a index vocabulary
 
