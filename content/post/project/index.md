@@ -1,3 +1,10 @@
+---
+date: 2020-5-11
+title: Main Competition
+---
+{{% staticref "files/project.ipynb" "newtab" %}}Download my file{{% /staticref %}}
+
+
 {
  "cells": [
   {
