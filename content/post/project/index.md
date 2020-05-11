@@ -1,40 +1,36 @@
----
-date: 2020-5-11
-title: Main Competition
----
-{{% staticref "files/project.ipynb" "newtab" %}}Download my file{{% /staticref %}}
+
 <font face="微软雅黑" size=7>Using CNN to predict the rating of comment
 
-# Model principle
+<font face="微软雅黑" size=6>1 Model principle
 
-##  Introduction 
+<font face="微软雅黑" size=5>1.1 Introduction 
 
-As a kind of deep neural network, convolutional neural network (CNN) is most commonly used in computer vision applications.
+<font face="微软雅黑" size=3>As a kind of deep neural network, convolutional neural network (CNN) is most commonly used in computer vision applications.
 However, studies in recent years have found that not only in the visual aspect, but also in the text classification of CNN has a significant effect.
 
-## Word Embedding
+<font face="微软雅黑" size=5>1.2 Word Embedding
 
-Word embedding as a textual representation serves the same purpose as one-hot encoding and integer encoding, but it has more advantages.Word embedding is to map each word through space and convert One hot representation into a Distributed representation, so that we can obtain a low-dimensional, dense word vector to represent each word. In this way, each word is a one-dimensional vector, and a sentence can be represented by several one-dimensional vectors, so we have a matrix to represent a sentence.Word2vec, as one of the mainstream methods of word embedding, is based on the statistical method to obtain the word vector.
+<font face="微软雅黑" size=3>Word embedding as a textual representation serves the same purpose as one-hot encoding and integer encoding, but it has more advantages.Word embedding is to map each word through space and convert One hot representation into a Distributed representation, so that we can obtain a low-dimensional, dense word vector to represent each word. In this way, each word is a one-dimensional vector, and a sentence can be represented by several one-dimensional vectors, so we have a matrix to represent a sentence.Word2vec, as one of the mainstream methods of word embedding, is based on the statistical method to obtain the word vector.
 
-## CNN
+<font face="微软雅黑" size=5>1.3 CNN
 
-Convolutional neural network is mainly composed of these layers: input layer, convolutional layer, Pooling layer and fully connected layer (the fully connected layer is the same as that in conventional neural network).
+<font face="微软雅黑" size=3>Convolutional neural network is mainly composed of these layers: input layer, convolutional layer, Pooling layer and fully connected layer (the fully connected layer is the same as that in conventional neural network).
 
-### convolutional layer
+<font face="微软雅黑" size=4>1.3.1 convolutional layer
 
-The convolutional layer is the core layer for constructing the convolutional neural network. The convolution operation is actually the dot product multiplication of the convolution kernel matrix and a small matrix in the corresponding input layer. The convolution kernel slides to extract the features in the input layer according to the step length by means of weight sharing.
+<font face="微软雅黑" size=3>The convolutional layer is the core layer for constructing the convolutional neural network. The convolution operation is actually the dot product multiplication of the convolution kernel matrix and a small matrix in the corresponding input layer. The convolution kernel slides to extract the features in the input layer according to the step length by means of weight sharing.
 
-### Pooling layer
+<font face="微软雅黑" size=4>1.3.2 Pooling layer
 
-NLP pool generally adopts the maximum pool, it will convolution layer vector of each channel to get maximum pool, get a scalar, so you can see simple convolution network can only be extracted to a sentence of whether there is a n - "gramm, it doesn't get this n -" gramm appear in statements, more can't extract to this "gramm and the link between the 2 pet" gramm dependencies. So there's going to be as many maxima scalars as there are in the convolution kernel, and then we're going to put those scalars together as a vector; The vectors obtained by the convolution kernel of all sizes are spliced again, so that a final one-dimensional vector is obtained, as shown in the figure above, at a glance. This allows you to transfer the final vector to the full connection layer or directly to the softmax layer for classification.
+<font face="微软雅黑" size=3>NLP pool generally adopts the maximum pool, it will convolution layer vector of each channel to get maximum pool, get a scalar, so you can see simple convolution network can only be extracted to a sentence of whether there is a n - "gramm, it doesn't get this n -" gramm appear in statements, more can't extract to this "gramm and the link between the 2 pet" gramm dependencies. So there's going to be as many maxima scalars as there are in the convolution kernel, and then we're going to put those scalars together as a vector; The vectors obtained by the convolution kernel of all sizes are spliced again, so that a final one-dimensional vector is obtained, as shown in the figure above, at a glance. This allows you to transfer the final vector to the full connection layer or directly to the softmax layer for classification.
 
-### Fully connected layer
+<font face="微软雅黑" size=4>1.3.3 Fully connected layer
 
-The full connectivity layer serves to map the learned "distributed feature representation" into the sample tag space.It's essentially a linear transformation from one feature space to another.
+<font face="微软雅黑" size=3>The full connectivity layer serves to map the learned "distributed feature representation" into the sample tag space.It's essentially a linear transformation from one feature space to another.
 
-# Data processing
+<font face="微软雅黑" size=6>2 Data processing
 
-## Data cleaning
+<font face="微软雅黑" size=5>2.1 Data cleaning
 
 <font face="微软雅黑" size=3> In this step, I read the CSV file, deleted the data with empty comments, and sorted the training data and test data.
     The get_label_sets function is used to read files and delete empty data.
@@ -120,9 +116,9 @@ def cut_sentence(sentences):
     [nltk_data]     (_ssl.c:749)>
 
 
-# Contributions & Optimization
+<font face="微软雅黑" size=6>3 Contributions & Optimization
 
-## Word embedding
+<font face="微软雅黑" size=5>3.1 Word embedding
 
 <font face="微软雅黑" size=3>In this step, I used word2vec to get the word vector and train the word vector model.
 
@@ -166,7 +162,7 @@ word_model(cut_sentence)
     Save success
 
 
-## Building the CNN model and training it
+<font face="微软雅黑" size=5>3.2 Building the CNN model and training it
 
 In this step, I built the CNN model using keras lib and trained it
 
@@ -362,7 +358,7 @@ cnn_model.save('/Users/ssssshi/Desktop/Arlington/DM/project/model/CNN.h5')
     CNN success
 
 
-## Testing model
+<font face="微软雅黑" size=5>3.3 Testing model
 
 In this step, the model is tested using a test set
 
@@ -464,7 +460,7 @@ y_result = invers_y(actual, y_pre, encoder, result_path)
     the accuracy is:  29.13278379484795
 
 
-# Challenge
+<font face="微软雅黑" size=6>4 Challenge
 
 a. Too much data and the model runs slowly
 
@@ -474,7 +470,7 @@ b.Score is continuous data, can't do forecast work.
 
 Resolution:The method of rounding is adopted to discretize the fractions, and finally it becomes a 10 classification model.
 
-# Hyper parameter tuning
+<font face="微软雅黑" size=6>5 Hyper parameter tuning
 
 a. convolution kernel size = 5
 
@@ -482,7 +478,7 @@ b.the window of pooling = 5
 
 c.Word vector dimension = 200
 
-# References 
+<font face="微软雅黑" size=6>6 References 
 
 Mei-Rong W . Text Classification Algorithm Based on Convolution Neural Network[J]. Journal of Jiamusi University(Natural ence Edition), 2018.
 
