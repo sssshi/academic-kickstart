@@ -1,8 +1,3 @@
----
-date: 2020-3-31
-title: Main Competition
----
-{{% staticref "files/project.ipynb" "newtab" %}}Download my file{{% /staticref %}}
 
 <font face="微软雅黑" size=7>Using CNN to predict the rating of comment
 
@@ -52,7 +47,7 @@ def get_label_sets():
     rating = []
     label_set = pd.read_csv('/Users/ssssshi/Desktop/Arlington/DM/project/boardgamegeek-reviews/bgg-13m-reviews.csv',encoding='utf-8',keep_default_na=False)
     print("Length of original data: ",len(label_set))
-    label_set = label_set[label_set['comment'] != '']  
+    label_set = label_set[label_set['comment'] != '']  # 删除"缺陷内容"为空的  (空格 \u3000)
     # print(len(label_set))
     label_rating = label_set['rating']
     for value in label_rating:
@@ -96,7 +91,7 @@ import nltk
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
-def check_contain_english(check_str):  
+def check_contain_english(check_str):  # 删除包含非中文ch的词语
     for ch in check_str:
         if (ch >= u'\u0041' and ch<=u'\u005a') or (ch >= u'\u0061' and ch<=u'\u007a'):
             return True
@@ -146,9 +141,9 @@ def word_model(sentences):
     model.save("/Users/ssssshi/Desktop/Arlington/DM/project/model/word_model")
     print("Save success")
        
-train_sentences = train_label_set.comment  
+train_sentences = train_label_set.comment  # "缺陷描述"
 cut_sentence_set = cut_sentence(train_sentences)
-train_label_set['cut_sentence'] = cut_sentence_set 
+train_label_set['cut_sentence'] = cut_sentence_set  # 在清洗后的原始数据加上一列, 内容为: 将清洗后的原始数据"缺陷描述"部分分词 (过滤了包含非汉字的词语)
 new_set = train_label_set[train_label_set.cut_sentence != ''].reset_index(drop=True) 
 cut_sentence = list(new_set.cut_sentence) 
 word_model(cut_sentence)
@@ -186,33 +181,34 @@ from keras.layers import *
 
 def make_embedding_matrix():
     word_model = gensim.models.Word2Vec.load("/Users/ssssshi/Desktop/Arlington/DM/project/model/word_model")
-    word2idx = {"_PAD": 0}  
-    vocab_list = [(k, word_model.wv[k]) for k, v in word_model.wv.vocab.items()]   
-    embeddings_matrix = np.zeros((len(word_model.wv.vocab.items()) + 2, word_model.vector_size))  
+    word2idx = {"_PAD": 0}  # 初始化 `[word : token]` 字典，后期 tokenize 语料库就是用该词典。
+    vocab_list = [(k, word_model.wv[k]) for k, v in word_model.wv.vocab.items()]  # 所有训练好的word2vec = List[('词语1',array([200维向量],float类型标记))] 8499个
+    # 存储所有 word2vec 中所有向量的数组，留意其中多一位，词向量全为 0， 用于 padding
+    embeddings_matrix = np.zeros((len(word_model.wv.vocab.items()) + 2, word_model.vector_size))  # matrix = 8051 * 200维度  TODO:为什么+2,多两行 ?
     for i in range(len(vocab_list)):
         word = vocab_list[i][0]
         word2idx[word] = i + 1  # word2id[词语]=word_id [1~8499]
-        embeddings_matrix[i + 1] = vocab_list[i][1]  
-    embeddings_matrix[len(vocab_list) + 1] = np.random.rand(1, 200)  
-    return embeddings_matrix, word2idx  
+        embeddings_matrix[i + 1] = vocab_list[i][1]  # embeddings_matrix[word_id] = 词语vec
+    embeddings_matrix[len(vocab_list) + 1] = np.random.rand(1, 200)  # TODO: 什么作用 ? keras进行embedding的时候必须进行len(vocab)+1,因为Keras需要预留一个全零层， 所以+1
+    return embeddings_matrix, word2idx  # embeddings_matrix[word_id]=词语vec(=8501*200) 和 word2id[词语]=word_id [1~8499]
 
 
-def text_to_index_array(p_new_dic, p_sen):  
+def text_to_index_array(p_new_dic, p_sen):  # 文本转为索引数字模式
     new_sentences = []
-    for sen in p_sen:   
-        new_sen = []  
-        for word in sen.split():  
+    for sen in p_sen:   # sen = 每一个句子
+        new_sen = []  # ['表明','现象']->[231,2276], 每个句子'词语'转化为对应的'索引编号'
+        for word in sen.split():  # 句子里每一个'词语'->
             try:
-                new_sen.append(p_new_dic[word])  
+                new_sen.append(p_new_dic[word])  # 单词转索引数字(映射表在word2idx中)
             except:
-                new_sen.append(0)  
+                new_sen.append(0)  # 索引字典里没有的词转为数字0  # TODO: 为什么选0?
                 #         for i in  range(max_len - len(new_sen)):
                 #             new_sen.append(0)
-        new_sentences.append(new_sen)  
+        new_sentences.append(new_sen)  # 全部句子的索引形式
     return np.array(new_sentences)
 
 
-def trans_value_y(y_all):  
+def trans_value_y(y_all):  # 把4个类别变成one-hot形式
     encoder = LabelEncoder()
     #     y_dim = len(pd.Series(train_label1).value_counts())
     encoded_Y1 = encoder.fit_transform(y_all)
@@ -220,33 +216,37 @@ def trans_value_y(y_all):
     y_train_label = np_utils.to_categorical(encoded_Y1)
     return y_train_label, encoder
 
-# train_sentences = train_label_set.comment  
+# train_sentences = train_label_set.comment  # "缺陷描述"
 # cut_sentence_set = cut_sentence(train_sentences)
-# train_label_set['cut_sentence'] = train_cut_sentence  
-# new_set = train_label_set[train_label_set.cut_sentence != ''].reset_index(drop=True)  
+# train_label_set['cut_sentence'] = train_cut_sentence  # 在清洗后的原始数据加上一列, 内容为: 将清洗后的原始数据"缺陷描述"部分分词 (过滤了包含非汉字的词语)
+# new_set = train_label_set[train_label_set.cut_sentence != ''].reset_index(drop=True)  # 删除分词后,结果cut_sentence为空的数据行
 tag = new_set.rating  # List
 cut_sentence = new_set.cut_sentence  # List
-label, encoder = trans_value_y(tag)  
+label, encoder = trans_value_y(tag)  # 把4个类别变成one-hot形式. label=该条数据tag的onehot=len为7的list; encoder为tag与onehot对应关系
 
-embeddings_matrix, word2idx = make_embedding_matrix()  
-pickle.dump(embeddings_matrix, open('/Users/ssssshi/Desktop/Arlington/DM/project/embeddings_matrix.pickle', 'wb'))  
+embeddings_matrix, word2idx = make_embedding_matrix()  # embeddings_matrix[word_id]=词语vec(=8501*200) 和 word2id[词语]=word_id [1~8499]
+pickle.dump(embeddings_matrix, open('/Users/ssssshi/Desktop/Arlington/DM/project/embeddings_matrix.pickle', 'wb'))  # 给test.py的用
 pickle.dump(word2idx, open('/Users/ssssshi/Desktop/Arlington/DM/project/word2idx.pickle', 'wb'))
 pickle.dump(encoder, open('/Users/ssssshi/Desktop/Arlington/DM/project/encoder.pickle', 'wb'))
 
 def get_train_data(cut_sentence):
-    all_train_ids = text_to_index_array(word2idx, cut_sentence)  
-    train_padded_seqs = pad_sequences(all_train_ids, maxlen=100)  
-    left_train_word_ids = [[len(word2idx)] + x[:-1] for x in all_train_ids]  
-    right_train_word_ids = [x[1:] + [len(word2idx)] for x in all_train_ids]  
+    all_train_ids = text_to_index_array(word2idx, cut_sentence)  # 每句话一个List=List[List句子1(词语1的index,词2的index),...]
+    train_padded_seqs = pad_sequences(all_train_ids, maxlen=100)  # 每篇文章都扩充成100个词的index(不够的用index=0在前面占位)
+    # 我们需要重新整理数据集 TODO:为什么这样做
+    left_train_word_ids = [[len(word2idx)] + x[:-1] for x in all_train_ids]  # We shift the document to the right to obtain the left-side contexts. x=[1273, 7736, 3051, 1457]->[7736, 3051, 1457]+[固定的word2id长度8500]=[8500, 1273, 7736, 3051, 1457]
+    right_train_word_ids = [x[1:] + [len(word2idx)] for x in all_train_ids]  # We shift the document to the left to obtain the right-side contexts.
     left_train_padded_seqs = pad_sequences(left_train_word_ids, maxlen=100)
     right_train_padded_seqs = pad_sequences(right_train_word_ids, maxlen=100)
     return train_padded_seqs,left_train_padded_seqs, right_train_padded_seqs
 
 train_padded_seqs, left_train_padded_seqs, right_train_padded_seqs = get_train_data(cut_sentence)
 
-K.clear_session()  
-EMBEDDING_DIM = 200  
-embedding_layer = Embedding(len(embeddings_matrix), len(vocab)+1
+# 词嵌入（使用预训练的词向量）
+# 神经网络的第一层，词向量层，本文使用了预训练词向量，可以把trainable那里设为False
+# 生成
+K.clear_session()  # 建模之前,清空'缓存'
+EMBEDDING_DIM = 200  # 词向量维度
+embedding_layer = Embedding(len(embeddings_matrix), # len(embeddings_matrix)=len(vocal)+1 keras进行embedding的时候必须进行len(vocab)+1
                             EMBEDDING_DIM,  # 200
                             weights=[embeddings_matrix],
                             trainable=False)
@@ -254,28 +254,30 @@ embedding_layer = Embedding(len(embeddings_matrix), len(vocab)+1
 def create_CNN_model(train_padded_seqs, label):
 # https: // github.com / airalcorn2 / Recurrent - Convolutional - Neural - Network - Text - Classifier / blob / master / recurrent_convolutional_keras.py
     # 参数
-    NUM_CLASSES = 10  
+    NUM_CLASSES = 10  # 模型3个分类类别
     filter_size = [3,5]
-
-    document = Input(shape=(100,), dtype="int32")  
-
+    # 模型输入,词向量
+    document = Input(shape=(100,), dtype="int32")  # 每篇数据取100个词
+    # 构建词向量
     doc_embedding = embedding_layer(document)
-    x = Conv1D(128, 5,activation='relu')(doc_embedding)
-    x = MaxPooling1D(5)(x)
-    x = Flatten()(x)
-    output = Dense(NUM_CLASSES, input_dim=128,activation="softmax")(x)  
-    model = Model(inputs=document, outputs=output)  
+    x = Conv1D(128, 5,activation='relu')(doc_embedding)#卷积层
+    x = MaxPooling1D(5)(x)#池化层，池化窗口为5
+    x = Flatten()(x)#把多维输入一维化
+    #全连接层
+    output = Dense(NUM_CLASSES, input_dim=128,activation="softmax")(x)  # 等式(6)和(7)  softmax对应的输出为各个类别的概率,和为1;因为最后只是一个类别所以用softmax,否则对应多个类别的用sigmod. 因为输出类别为3类,softmax函数作用于pool_rnn，将其转换每个class的概率 TODO:可调参数
+    model = Model(inputs=document, outputs=output)  # Keras的函数式模型为Model，即广义的拥有输入和输出的模型，我们使用Model来初始化一个函数式模型
     #
-    model.compile(loss='categorical_crossentropy',  
-                  optimizer='adam',  
+    model.compile(loss='categorical_crossentropy',  # 多类的对数损失
+                  optimizer='adam',  # 目前认为adam比较好 TODO:optimizer可调为adadelta
                   metrics=['accuracy'])
 
     #训练模型
     train_res = model.fit(train_padded_seqs, label,
-                batch_size=1024,  
-                epochs=20)  
-    loss = train_res.history["loss"]  
-    print("\n\n\nloss: ", loss)  
+                batch_size=1024,  # TODO:2,4,8,16,32,64...每次用128条数据训练(整个数据集samples个数 = batch_size * n_batch)
+                epochs=20)  # 整体数据训练6轮
+                # 还可以加上 验证集 validation_data=(x_val, y_val))
+    loss = train_res.history["loss"]  # 最后一次的效果,一般最好
+    print("\n\n\nloss: ", loss)  # 打印每一次epoch的损失函数,看是否收敛(即,是否越来越小)'
     return model
 
 # 训练模型
@@ -460,25 +462,25 @@ y_result = invers_y(actual, y_pre, encoder, result_path)
 
 <font face="微软雅黑" size=6>4 Challenge
 
-a. Too much data and the model runs slowly
+<font face="微软雅黑" size=3>a. Too much data and the model runs slowly
 
-Resolution: Use some data to build a preliminary model, and then use all the data to evaluate the performance of the model.
+<font face="微软雅黑" size=3>Resolution: Use some data to build a preliminary model, and then use all the data to evaluate the performance of the model.
 
-b.Score is continuous data, can't do forecast work.
+<font face="微软雅黑" size=3>b.Score is continuous data, can't do forecast work.
 
-Resolution:The method of rounding is adopted to discretize the fractions, and finally it becomes a 10 classification model.
+<font face="微软雅黑" size=3>Resolution:The method of rounding is adopted to discretize the fractions, and finally it becomes a 10 classification model.
 
 <font face="微软雅黑" size=6>5 Hyper parameter tuning
 
-a. convolution kernel size = 5
+<font face="微软雅黑" size=3>a. convolution kernel size = 5
 
-b.the window of pooling = 5
+<font face="微软雅黑" size=3>b.the window of pooling = 5
 
-c.Word vector dimension = 200
+<font face="微软雅黑" size=3>c.Word vector dimension = 200
 
 <font face="微软雅黑" size=6>6 References 
 
-Mei-Rong W . Text Classification Algorithm Based on Convolution Neural Network[J]. Journal of Jiamusi University(Natural ence Edition), 2018.
+<font face="微软雅黑" size=3>Mei-Rong W . Text Classification Algorithm Based on Convolution Neural Network[J]. Journal of Jiamusi University(Natural ence Edition), 2018.
 
 
 ```python
