@@ -1,4 +1,8 @@
-
+---
+date: 2020-5-11
+title: Main Competition
+---
+{{% staticref "files/project.ipynb" "newtab" %}}Download my file{{% /staticref %}}
 <font face="微软雅黑" size=7>Using CNN to predict the rating of comment
 
 # Model principle
