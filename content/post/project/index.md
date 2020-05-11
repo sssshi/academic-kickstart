@@ -3,6 +3,7 @@ date: 2020-5-11
 title: Main Competition
 ---
 {{% staticref "files/project.ipynb" "newtab" %}}Download my file{{% /staticref %}}
+
 [Demo readme](https://github.com/sssshi/academic-kickstart/blob/master/content/post/project/readme.md).
 
 
